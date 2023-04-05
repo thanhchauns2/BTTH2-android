@@ -33,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Mở Activity2 khi click vào mục trong ListView
                 Intent intent = new Intent(MainActivity.this, Activity2.class);
+                double longtitude = 0;
+                double latitude = 0;
+                intent.putExtra("long", longtitude);
+                intent.putExtra("lat", latitude);
                 startActivity(intent);
             }
         });
