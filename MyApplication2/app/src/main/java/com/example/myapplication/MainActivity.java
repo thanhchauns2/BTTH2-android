@@ -11,7 +11,13 @@ import android.widget.ListView;
 public class MainActivity extends AppCompatActivity {
 
     private ListView listView;
-    private String[] danhSachDiaDanh = {"Địa danh 1", "Địa danh 2", "Địa danh 3", "Địa danh 4", "Địa danh 5"};
+    private String[] danhSachDiaDanh = {"Hồ Gươm", "Lăng Chủ Tịch", "Cột cờ Hà Nội", "Chùa Một Cột", "Hồ Tây", "Chùa Trấn Quốc"};
+    private String[] moTa = {"Danh thắng lâu đời của Hà Nội.", "Lịch sử, văn hóa, độc đáo.", "Biểu tượng thủ đô Hà Nội.",
+            "Điểm du lịch nổi tiếng.", "Điểm du lịch nổi tiếng.", "Lịch sử, văn hóa, độc đáo."};
+    private double[] lons = {21.0285, 21.037396, 21.0285, 21.037445, 21.0707, 21.0470};
+    private double[] lats = {105.8542, 105.832565 , 105.8542, 105.832540, 105.8038, 105.8458};
+    private String[] imgs = {"hoan_kiem", "lang_chu_tich", "cot_co_ha_no", "chua_mot_cot", "ho_tay", "chua_tran_quoc"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +39,11 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Mở Activity2 khi click vào mục trong ListView
                 Intent intent = new Intent(MainActivity.this, Activity2.class);
-                double longtitude = 0;
-                double latitude = 0;
-                intent.putExtra("long", longtitude);
-                intent.putExtra("lat", latitude);
+                intent.putExtra("long", lons[position]);
+                intent.putExtra("lat", lats[position]);
+                intent.putExtra("tenDiaDanh", danhSachDiaDanh[position]);
+                intent.putExtra("moTa", moTa[position]);
+                intent.putExtra("imgl", imgs[position]);
                 startActivity(intent);
             }
         });
